@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CharacterSelect from './components/CharacterSelect';
 import IntroScene from './components/IntroScene';
+import Combat from './components/Combat';
 import './styles/game.css';
 
 export default function App() {
@@ -27,11 +28,8 @@ export default function App() {
           onContinue={handleContinueFromIntro}
         />
       )}
-      {gameState === 'COMBAT' && (
-        <div className="placeholder">
-          <h1>🐛 Sistema de Combate en construcción...</h1>
-          <p>Personaje: {selectedCharacter?.name}</p>
-        </div>
+      {gameState === 'COMBAT' && selectedCharacter && (
+        <Combat character={selectedCharacter} />
       )}
     </div>
   );
