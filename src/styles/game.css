@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rubik:wght@500;700;900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,74 +7,114 @@
 }
 
 body {
-  font-family: 'Arial', sans-serif;
-  background: #1a1a2e;
+  font-family: 'Rubik', sans-serif;
+  background: #0d0d1a;
   color: #fff;
+}
+
+/* ===== FONDO ESTILO STAND / ENERGÍA JOJO ===== */
+.character-select-container,
+.intro-scene,
+.combat-container,
+.placeholder {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 61, 129, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(255, 214, 10, 0.12) 0%, transparent 40%),
+    linear-gradient(135deg, #0d0d1a 0%, #1a1230 50%, #2b0f2f 100%);
+  position: relative;
+}
+
+.character-select-container::before,
+.combat-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 12px);
+  pointer-events: none;
 }
 
 .character-select-container {
   padding: 40px 20px;
   text-align: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
 }
 
 .character-select-container h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  letter-spacing: 3px;
+  margin-bottom: 5px;
+  color: #ffd60a;
+  text-shadow:
+    3px 3px 0 #ff3d81,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  transform: skewX(-3deg);
 }
 
 .character-select-container > p {
   font-size: 1.1rem;
-  color: #bbb;
+  color: #c9b8ff;
   margin-bottom: 40px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 .characters-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 24px;
   max-width: 1200px;
   margin: 0 auto 40px;
+  position: relative;
+  z-index: 1;
 }
 
 .character-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 3px solid;
-  border-radius: 10px;
+  background: linear-gradient(160deg, rgba(30, 20, 50, 0.9) 0%, rgba(15, 10, 30, 0.9) 100%);
+  border: 4px solid;
+  border-radius: 4px;
   padding: 20px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 92% 100%, 0 100%);
+  position: relative;
 }
 
 .character-card:hover {
-  transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 25px currentColor;
 }
 
 .character-card.selected {
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 20px currentColor;
+  background: linear-gradient(160deg, rgba(50, 30, 70, 0.95) 0%, rgba(20, 10, 35, 0.95) 100%);
+  box-shadow: 0 0 30px currentColor, inset 0 0 20px currentColor;
 }
 
 .character-image {
   width: 150px;
   height: 150px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 15px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid currentColor;
+  background: rgba(255, 255, 255, 0.05);
+  border: 3px solid currentColor;
+  box-shadow: 0 0 15px currentColor;
 }
 
 .character-card h2 {
-  font-size: 1.3rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
   margin-bottom: 8px;
+  color: #fff;
 }
 
 .character-card p {
-  color: #aaa;
+  color: #b8a8d8;
   font-size: 0.9rem;
   margin-bottom: 15px;
 }
@@ -82,8 +124,8 @@ body {
   justify-content: space-around;
   margin-bottom: 15px;
   padding: 10px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 2px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
 }
 
 .stat {
@@ -95,49 +137,57 @@ body {
 
 .stat span:first-child {
   font-size: 0.8rem;
-  color: #aaa;
+  color: #b8a8d8;
+  font-weight: 700;
 }
 
 .stat span:last-child {
-  font-size: 1.3rem;
-  font-weight: bold;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  color: #ffd60a;
 }
 
 .btn-start {
-  background: rgba(76, 175, 80, 0.2);
-  border: 2px solid #4caf50;
-  color: #4caf50;
+  background: rgba(255, 214, 10, 0.15);
+  border: 2px solid #ffd60a;
+  color: #ffd60a;
   padding: 8px 16px;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
 }
 
 .btn-begin {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Bebas Neue', sans-serif;
+  background: linear-gradient(135deg, #ff3d81 0%, #7c3aed 100%);
   border: none;
   color: white;
-  padding: 15px 40px;
-  font-size: 1.1rem;
-  border-radius: 8px;
+  padding: 16px 48px;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 20px;
+  clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
+  position: relative;
+  z-index: 1;
 }
 
 .btn-begin:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+  box-shadow: 0 0 30px rgba(255, 61, 129, 0.7);
 }
 
 .intro-scene {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  position: relative;
   overflow: hidden;
 }
 
@@ -150,33 +200,37 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.15;
+  opacity: 0.2;
 }
 
 .intro-character {
-  width: 300px;
-  height: 300px;
+  width: 340px;
+  height: 340px;
   object-fit: cover;
-  filter: brightness(0.8);
+  filter: brightness(0.7) saturate(1.4);
 }
 
 .intro-text-box {
   position: relative;
   z-index: 10;
-  background: rgba(0, 0, 0, 0.8);
-  border: 2px solid #667eea;
-  border-radius: 10px;
+  background: linear-gradient(160deg, rgba(20, 10, 35, 0.92) 0%, rgba(10, 5, 20, 0.92) 100%);
+  border: 3px solid #ffd60a;
+  border-radius: 4px;
   padding: 40px;
   max-width: 600px;
   text-align: center;
+  clip-path: polygon(0 0, 100% 0, 100% 94%, 94% 100%, 0 100%);
+  box-shadow: 0 0 40px rgba(255, 61, 129, 0.3);
 }
 
 .intro-text {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  font-weight: 700;
   line-height: 1.6;
   margin-bottom: 30px;
   min-height: 60px;
   animation: fadeIn 0.5s ease-in;
+  color: #fff;
 }
 
 @keyframes fadeIn {
@@ -191,19 +245,21 @@ body {
 }
 
 .btn-skip, .btn-continue {
-  background: #667eea;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+  background: linear-gradient(135deg, #ff3d81 0%, #7c3aed 100%);
   border: none;
   color: white;
-  padding: 12px 24px;
-  border-radius: 6px;
+  padding: 12px 28px;
+  border-radius: 4px;
   cursor: pointer;
-  font-weight: bold;
   transition: all 0.3s ease;
 }
 
 .btn-skip:hover, .btn-continue:hover {
-  background: #764ba2;
   transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 61, 129, 0.6);
 }
 
 .placeholder {
@@ -218,7 +274,6 @@ body {
 /* COMBATE */
 .combat-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -244,54 +299,59 @@ body {
   width: 150px;
   height: 150px;
   object-fit: cover;
-  border-radius: 10px;
-  border: 3px solid #667eea;
-  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  border: 4px solid #ffd60a;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 20px rgba(255, 214, 10, 0.4);
 }
 
 .fighter-image.skeleton {
-  border-color: #888;
-  filter: grayscale(100%);
+  border-color: #ff3d81;
+  filter: grayscale(30%) contrast(1.1);
+  box-shadow: 0 0 20px rgba(255, 61, 129, 0.4);
 }
 
 .hp-bar {
   width: 200px;
-  height: 30px;
-  background: rgba(0, 0, 0, 0.5);
-  border: 2px solid #666;
-  border-radius: 15px;
+  height: 26px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #fff;
+  border-radius: 3px;
   overflow: hidden;
   position: relative;
+  clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);
 }
 
 .hp-fill {
   height: 100%;
-  background: linear-gradient(90deg, #4caf50, #8bc34a);
+  background: linear-gradient(90deg, #00e5a0, #ffd60a);
   transition: width 0.3s ease;
 }
 
 .hp-fill.skeleton-fill {
-  background: linear-gradient(90deg, #f44336, #e91e63);
+  background: linear-gradient(90deg, #ff3d81, #7c3aed);
 }
 
 .hp-text {
-  font-size: 0.9rem;
-  color: #aaa;
-  font-weight: bold;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  color: #fff;
 }
 
 .vs-text {
-  font-size: 1.5rem;
-  color: #fff;
-  font-weight: bold;
-  opacity: 0.5;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: #ff3d81;
+  text-shadow: 2px 2px 0 #000;
+  transform: skewX(-6deg);
 }
 
 .combat-area {
   flex: 1;
-  background: rgba(0, 0, 0, 0.3);
-  border: 2px solid #667eea;
-  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 2px solid #ff3d81;
+  border-radius: 4px;
   padding: 20px;
   position: relative;
   min-height: 200px;
@@ -306,7 +366,7 @@ body {
   overflow-y: auto;
   background: rgba(0, 0, 0, 0.5);
   border: 1px solid #555;
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -315,7 +375,8 @@ body {
 
 .log-entry {
   font-size: 0.95rem;
-  color: #aaa;
+  font-weight: 500;
+  color: #c9b8ff;
   animation: slideIn 0.3s ease;
 }
 
@@ -359,23 +420,26 @@ body {
 }
 
 .question-card {
-  background: rgba(0, 0, 0, 0.6);
-  border: 2px solid #667eea;
-  border-radius: 10px;
+  background: linear-gradient(160deg, rgba(30, 15, 45, 0.9) 0%, rgba(10, 5, 20, 0.9) 100%);
+  border: 3px solid #ffd60a;
+  border-radius: 4px;
   padding: 30px;
   text-align: center;
+  clip-path: polygon(0 0, 100% 0, 100% 96%, 96% 100%, 0 100%);
 }
 
 .question-counter {
-  font-size: 0.9rem;
-  color: #aaa;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  color: #ffd60a;
   margin-bottom: 15px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 .question-text {
   font-size: 1.3rem;
+  font-weight: 700;
   color: #fff;
   margin-bottom: 25px;
   line-height: 1.5;
@@ -391,19 +455,20 @@ body {
 
 .option-btn {
   padding: 15px 20px;
-  background: rgba(102, 126, 234, 0.2);
-  border: 2px solid #667eea;
+  background: rgba(124, 58, 237, 0.2);
+  border: 2px solid #7c3aed;
   color: #fff;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .option-btn:hover:not(:disabled) {
-  background: rgba(102, 126, 234, 0.4);
+  background: rgba(124, 58, 237, 0.4);
   transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.5);
 }
 
 .option-btn:disabled {
@@ -431,45 +496,50 @@ body {
 }
 
 .game-over-screen {
-  background: rgba(0, 0, 0, 0.8);
-  border: 2px solid #667eea;
-  border-radius: 10px;
+  background: linear-gradient(160deg, rgba(20, 10, 35, 0.95) 0%, rgba(5, 5, 15, 0.95) 100%);
+  border: 3px solid #ffd60a;
+  border-radius: 4px;
   padding: 50px 30px;
   text-align: center;
   animation: fadeIn 0.5s ease;
+  clip-path: polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%);
 }
 
 .game-over-screen h1 {
-  font-size: 3rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
   margin-bottom: 20px;
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
 }
 
 .victory {
-  color: #4caf50;
-  text-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+  color: #00e5a0;
+  text-shadow: 3px 3px 0 #000, 0 0 25px rgba(0, 229, 160, 0.6);
 }
 
 .defeat {
-  color: #f44336;
-  text-shadow: 0 0 20px rgba(244, 67, 54, 0.5);
+  color: #ff3d81;
+  text-shadow: 3px 3px 0 #000, 0 0 25px rgba(255, 61, 129, 0.6);
 }
 
 .victory-text, .defeat-text {
   font-size: 1.2rem;
-  color: #aaa;
+  font-weight: 500;
+  color: #c9b8ff;
   margin-bottom: 30px;
   line-height: 1.6;
 }
 
 .btn-continue-combat {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #ff3d81 0%, #7c3aed 100%);
   border: none;
   color: white;
   padding: 15px 40px;
-  font-size: 1.1rem;
-  border-radius: 8px;
+  font-size: 1.3rem;
+  border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 20px;
@@ -477,5 +547,5 @@ body {
 
 .btn-continue-combat:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+  box-shadow: 0 0 30px rgba(255, 61, 129, 0.6);
 }
