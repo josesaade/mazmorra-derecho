@@ -81,7 +81,7 @@ export default function Combat({ character }) {
         <div className="vs-text">VS</div>
 
         <div className="fighter">
-          <img src="https://via.placeholder.com/150?text=Skeleton" alt="Esqueleto" className="fighter-image skeleton" />
+          <img src="/assets/enemies/skeleton.png" alt="Esqueleto" className="fighter-image skeleton" />
           <div className="hp-bar">
             <div className="hp-fill skeleton-fill" style={{ width: `${(skeletonHP / 100) * 100}%` }}></div>
           </div>
